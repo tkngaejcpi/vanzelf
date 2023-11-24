@@ -19,9 +19,7 @@ export const isArticleValid = async (
   { title, body, description, created_date, signature }: Article,
   b64VerifyKey: string,
 ): Promise<boolean> => {
-  const verfiyKeyJWK: JsonWebKey = JSON.parse(
-    Base64.decode(b64VerifyKey),
-  );
+  const verfiyKeyJWK: JsonWebKey = JSON.parse(Base64.decode(b64VerifyKey));
   const verifyKey = await globalThis.crypto.subtle.importKey(
     "jwk",
     verfiyKeyJWK,
