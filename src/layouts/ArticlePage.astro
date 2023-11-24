@@ -15,10 +15,8 @@ const { title, description, createdDate } = Astro.props;
 <BasePage metadata={{ title, description }}>
   <Prose>
     <!-- metadata embed -->
-    <div
-      class="mb-[-0.75rem] flex flex-col gap-2 border-b-2 border-dotted pb-2"
-    >
-      <h1 class="mb-0">{title}</h1>
+    <div class="flex flex-col gap-2 border-b-2 border-dotted pb-4">
+      <h1 class="mb-1">{title}</h1>
 
       <div class="flex flex-row gap-2 text-sm text-neutral-500">
         <a class="text-neutral-500 no-underline" href="/articles"
