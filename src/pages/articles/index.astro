@@ -1,0 +1,30 @@
+---
+import Prose from "@components/Prose.astro";
+import BasePage from "@layouts/BasePage.astro";
+import { type Article } from "@models/Article";
+
+const articles: Article[] = await fetch(
+  import.meta.env.GET_ALL_ARTICLES_URL,
+).then((res) => res.json());
+---
+
+<BasePage>
+  <Prose>
+    <h1>寫嘅嘢</h1>
+
+    <ul>
+      {
+        articles.map((article) => (
+          <li>
+            <a href={`/articles/${article.title}`}>{article.title}</a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <h1>其他</h1>
+    <ul>
+        <li><a href="/">撳呢度返去主頁 ✨</a></li>
+    </ul>
+  </Prose>
+</BasePage>

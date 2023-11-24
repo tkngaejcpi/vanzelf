@@ -1,0 +1,16 @@
+---
+import Prose from "@components/Prose.astro";
+import BasePage from "@layouts/BasePage.astro";
+---
+
+<BasePage
+  metadata={{
+    title: "Riley 嘅 Blog",
+    description:
+      "呢度係 Riley 嘅 Blog，我會喺呢度發佈一啲我感興趣嘅嘢，希望你會鍾意🥰。",
+  }}
+>
+  <Prose>
+    <slot />
+  </Prose>
+</BasePage>

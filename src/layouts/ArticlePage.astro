@@ -1,0 +1,34 @@
+---
+import Prose from "@components/Prose.astro";
+import BasePage from "@layouts/BasePage.astro";
+
+interface Props {
+  title: string;
+  description: string;
+
+  createdDate: Date;
+}
+
+const { title, description, createdDate } = Astro.props;
+---
+
+<BasePage metadata={{ title, description }}>
+  <Prose>
+    <!-- metadata embed -->
+    <div
+      class="mb-[-0.75rem] flex flex-col gap-2 border-b-2 border-dotted pb-2"
+    >
+      <h1 class="mb-0">{title}</h1>
+
+      <div class="flex flex-row gap-2 text-sm text-neutral-500">
+        <a class="text-neutral-500 no-underline" href="/articles"
+          >⬅️ 返去上一頁</a
+        >
+
+        <span>創建於 {createdDate.toLocaleDateString("zh-HK")}</span>
+      </div>
+    </div>
+
+    <slot />
+  </Prose>
+</BasePage>

@@ -1,0 +1,33 @@
+---
+import { marked } from "marked";
+
+import ArticlePage from "@layouts/ArticlePage.astro";
+import { isArticleValid, type Article } from "@models/Article";
+
+export const getStaticPaths = async () => {
+  /* fetch articles from database */
+  const articles: Article[] = await fetch(
+    import.meta.env.GET_ALL_ARTICLES_URL,
+  ).then((res) => res.json());
+
+  return articles.map((article) => ({
+    params: { title: article.title },
+    props: { article },
+  }));
+};
+
+const { article } = Astro.props;
+const { title, body, description, created_date } = article;
+
+/* do signature verificaton, if not match throw error */
+if (!(await isArticleValid(article, import.meta.env.PUBLIC_VERIFY_KEY))) {
+  throw Error(`the signature of '${title}' doesn't match`);
+}
+---
+
+<ArticlePage
+  title={title}
+  description={description}
+  createdDate={new Date(created_date)}
+  set:html={marked.parse(body)}
+/>

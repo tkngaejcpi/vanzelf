@@ -1,0 +1,60 @@
+---
+import { ViewTransitions } from "astro:transitions";
+
+interface Metadata {
+  title?: string;
+  description?: string;
+}
+
+interface Props {
+  metadata?: Metadata;
+}
+
+const { metadata } = Astro.props;
+---
+
+<html lang="zh">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- metadata -->
+    <title>{metadata?.title}</title>
+    <meta name="description" content={metadata?.description} />
+
+    <!-- rebots -->
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow" />
+
+    <!-- sitemap -->
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <!-- google site verification -->
+    <meta
+      name="google-site-verification"
+      content="7B0l30igkaxo4_hCH6iF2uA4IpWbfjEdt0KEpJgZQ_0"
+    />
+
+    <!-- cloudflare web analytics -->
+    <script
+      src="https://static.cloudflareinsights.com/beacon.min.js"
+      data-cf-beacon='{"token": "7e04fd5ec7774883aa24798ac3124284"}'></script>
+
+    <!-- astro transition -->
+    <ViewTransitions />
+  </head>
+  <body>
+    <main>
+      <div class="h-screen w-screen overflow-scroll bg-stone-50 p-4">
+        <div
+          class="rounded-md border-2 border-dotted border-stone-400 p-3"
+          transition:animate="fade"
+        >
+          <slot />
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
