@@ -4,6 +4,8 @@ layout: "@layouts/Index.astro"
 
 # 導航 🌏
 
+Hello，我係 Riley，呢度係我嘅 Blog，喺：
+
 - [呢處](/articles)可以睇到我嘅文章
 - [去 Github](https://github.com/tkngaejcpi) 可以睇到我嘅 Code
 
