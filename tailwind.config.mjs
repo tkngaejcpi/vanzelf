@@ -20,9 +20,7 @@ export default {
         "Segoe UI Symbol",
       ],
       serif: [
-        "Newyork",
         "Noto Serif CJK TC",
-        "Noto Serif",
         "serif",
         "Apple Color Emoji",
         "Noto Color Emoji",
