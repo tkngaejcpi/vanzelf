@@ -2,6 +2,7 @@
 import Prose from "@components/Prose.astro";
 import BasePage from "@layouts/BasePage.astro";
 ---
+
 <BasePage
   metadata={{
     title: "關於我",
@@ -12,4 +13,13 @@ import BasePage from "@layouts/BasePage.astro";
   <Prose>
     <slot />
   </Prose>
+
+  <!-- prefetch when loaded -->
+  <script defer>
+    import { prefetch } from "astro:prefetch";
+
+    const target = ["/"];
+
+    target.forEach((t) => prefetch(t));
+  </script>
 </BasePage>

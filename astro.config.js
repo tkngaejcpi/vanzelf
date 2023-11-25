@@ -11,4 +11,6 @@ export default defineConfig({
   },
 
   integrations: [tailwind(), sitemap()],
+
+  prefetch: true,
 });

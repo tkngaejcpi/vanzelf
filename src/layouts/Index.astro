@@ -6,11 +6,19 @@ import BasePage from "@layouts/BasePage.astro";
 <BasePage
   metadata={{
     title: "Riley 嘅 Blog",
-    description:
-      "Hello，我係 Riley 👋，呢度係我嘅 Blog。",
+    description: "Hello，我係 Riley 👋，呢度係我嘅 Blog。",
   }}
 >
   <Prose>
     <slot />
   </Prose>
+
+  <!-- prefetch when loaded -->
+  <script defer>
+    import { prefetch } from "astro:prefetch";
+
+    const target = ["/about-me", "/article"];
+
+    target.forEach((t) => prefetch(t));
+  </script>
 </BasePage>
